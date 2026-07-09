@@ -1,6 +1,0 @@
-[
-  {"id":"p1","name":"Cherry tomatoes","quantity":"2 cups","category":"Produce","expirationDate":"2026-07-12"},
-  {"id":"p2","name":"Eggs","quantity":"8","category":"Protein","expirationDate":"2026-07-18"},
-  {"id":"p3","name":"Pasta","quantity":"500 g","category":"Grains","expirationDate":"2027-01-20"},
-  {"id":"p4","name":"Parmesan","quantity":"180 g","category":"Dairy","expirationDate":"2026-07-22"}
-]
