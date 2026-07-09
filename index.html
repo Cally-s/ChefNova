@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chef Nova — your intelligent companion for recipes, pantry planning, and kitchen confidence.">
+  <title>Chef Nova — Cook with confidence</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" data-page="home" aria-label="Chef Nova home">
+        <span class="brand-mark">✦</span><span>Chef <strong>Nova</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#home" data-page="home"><span>⌂</span> Home</a>
+        <a class="nav-link" href="#recipes" data-page="recipes"><span>⌕</span> Discover</a>
+        <a class="nav-link" href="#pantry" data-page="pantry"><span>◫</span> My Pantry</a>
+        <a class="nav-link" href="#planner" data-page="planner"><span>▦</span> Meal Planner</a>
+        <a class="nav-link" href="#favorites" data-page="favorites"><span>♡</span> Favorites</a>
+        <a class="nav-link" href="#learn" data-page="learn"><span>◇</span> Kitchen Academy</a>
+        <a class="nav-link" href="#account" data-page="account"><span>◉</span> My Account</a>
+      </nav>
+      <div class="sidebar-card">
+        <span class="eyebrow">NOVA NOTE</span>
+        <p>Great meals start with what you already have.</p>
+        <button class="text-button" data-page="pantry">Check your pantry →</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Open menu">☰</button>
+        <div class="topbar-copy"><span class="status-dot"></span> Your kitchen, organized</div>
+        <div class="account-area" id="accountArea"></div>
+      </header>
+
+      <section class="page active" id="home-page" data-page-section="home">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="pill">✦ AI-STYLE COOKING, COSMICALLY SIMPLE</span>
+            <h1>Your kitchen.<br>Your universe of <em>flavor.</em></h1>
+            <p>Chef Nova is your intelligent cooking companion—turning pantry ingredients into inspired recipes, organized plans, and more confident meals.</p>
+            <div class="button-row">
+              <button class="button primary" data-auth-mode="register">Create Account <span>→</span></button>
+              <button class="button secondary" data-page="recipes">Find Recipes</button>
+            </div>
+          </div>
+          <div class="hero-visual" aria-label="Featured cooking inspiration">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="plate"><span>🥘</span></div>
+            <div class="float-card float-one"><b>12</b><small>pantry items</small></div>
+            <div class="float-card float-two"><b>Fresh idea</b><small>ready in 25 min</small></div>
+          </div>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">YOUR KITCHEN AT A GLANCE</span><h2>What would you like to do?</h2></div></div>
+        <div class="feature-grid">
+          <button class="feature-card accent-sage" data-page="recipes"><span class="feature-icon">⌕</span><h3>Discover recipes</h3><p>Find the perfect dish using ingredients you already have.</p><span class="card-link">Start exploring →</span></button>
+          <button class="feature-card accent-peach" data-page="pantry"><span class="feature-icon">◫</span><h3>Manage your pantry</h3><p>Track ingredients, quantities, and what needs using soon.</p><span class="card-link">View pantry →</span></button>
+          <button class="feature-card accent-gold" data-page="planner"><span class="feature-icon">▦</span><h3>Plan your week</h3><p>Build a calm, delicious plan for breakfast, lunch, and dinner.</p><span class="card-link">Plan meals →</span></button>
+        </div>
+      </section>
+
+      <section class="page" id="recipes-page" data-page-section="recipes">
+        <div class="page-heading"><div><span class="eyebrow">DISCOVER</span><h1>What are we cooking?</h1><p>Search by recipe name or add ingredients separated by commas.</p></div></div>
+        <div class="search-panel"><label for="recipeSearch">Ingredients or dish</label><div class="search-row"><input id="recipeSearch" type="search" placeholder="e.g. tomato, pasta, garlic"><button class="button primary" id="recipeSearchButton">Find recipes</button></div></div>
+        <div id="recipeResults" class="recipe-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="page" id="pantry-page" data-page-section="pantry">
+        <div class="page-heading split"><div><span class="eyebrow">MY PANTRY</span><h1>Know what you have.</h1><p>Keep ingredients visible and use food before it goes to waste.</p></div><button class="button primary" id="showPantryForm">+ Add ingredient</button></div>
+        <form class="inline-form hidden" id="pantryForm">
+          <input name="name" required placeholder="Ingredient name"><input name="quantity" required placeholder="Quantity, e.g. 6"><select name="category"><option>Produce</option><option>Dairy</option><option>Protein</option><option>Grains</option><option>Pantry</option><option>Other</option></select><input name="expirationDate" type="date"><button class="button primary" type="submit">Save</button>
+        </form>
+        <div class="summary-grid" id="pantrySummary"></div><div class="table-card"><div id="pantryList"></div></div>
+      </section>
+
+      <section class="page" id="planner-page" data-page-section="planner">
+        <div class="page-heading"><div><span class="eyebrow">MEAL PLANNER</span><h1>A delicious week, mapped out.</h1><p>Changes save automatically on this device.</p></div></div>
+        <div class="planner-wrap" id="mealPlanner"></div>
+      </section>
+
+      <section class="page" id="favorites-page" data-page-section="favorites">
+        <div class="page-heading"><div><span class="eyebrow">FAVORITES</span><h1>Your personal cookbook.</h1><p>The recipes you loved enough to keep close.</p></div></div>
+        <div id="favoriteResults" class="recipe-grid"></div>
+      </section>
+
+      <section class="page" id="learn-page" data-page-section="learn">
+        <div class="page-heading"><div><span class="eyebrow">KITCHEN ACADEMY</span><h1>Good instincts are learned.</h1><p>Clear, practical knowledge for safer and more confident cooking.</p></div></div>
+        <div class="filter-row" id="ruleFilters"></div><div class="learning-grid" id="ruleList"></div>
+      </section>
+
+      <section class="page" id="account-page" data-page-section="account">
+        <div class="page-heading"><div><span class="eyebrow">MISSION CONTROL</span><h1>Your Chef Nova account.</h1><p>Save your kitchen preferences and keep your cooking journey close.</p></div></div>
+        <div id="accountGuest" class="account-layout">
+          <div class="account-intro-card">
+            <span class="brand-mark large">✦</span><span class="eyebrow">WELCOME ABOARD</span>
+            <h2>Cook like the stars aligned.</h2>
+            <p>Create your personal kitchen profile so Nova can remember your dietary preferences, allergies, and saved cooking data on this device.</p>
+            <div class="account-benefit"><span>01</span><div><b>Your preferences</b><small>Keep dietary needs and allergies in one place.</small></div></div>
+            <div class="account-benefit"><span>02</span><div><b>Your kitchen</b><small>Return to your saved pantry, favorites, and plans.</small></div></div>
+          </div>
+          <div class="account-form-card">
+            <div class="auth-tabs" role="tablist" aria-label="Account options">
+              <button class="auth-tab active" id="loginTab" data-auth-mode="login" role="tab">Login</button>
+              <button class="auth-tab" id="registerTab" data-auth-mode="register" role="tab">Create Account</button>
+            </div>
+            <form id="loginForm" class="account-form">
+              <div class="form-heading"><h2>Welcome back</h2><p>Continue your culinary mission.</p></div>
+              <label>Email address<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+              <label>Password<input name="password" type="password" autocomplete="current-password" required minlength="4" placeholder="Your password"></label>
+              <button class="button primary full" type="submit">Login</button><p class="form-message" id="loginMessage" aria-live="polite"></p>
+            </form>
+            <form id="registerForm" class="account-form hidden">
+              <div class="form-heading"><h2>Create your account</h2><p>Tell Nova a little about the cook behind the apron.</p></div>
+              <div class="form-grid two"><label>Full name<input name="name" required autocomplete="name" placeholder="Your name"></label><label>Age<input name="age" type="number" min="13" max="120" required placeholder="Age"></label></div>
+              <label>Email address<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+              <label>Password<input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="At least 6 characters"></label>
+              <div class="form-grid two"><label>Gender<select name="gender" required><option value="">Select</option><option>Woman</option><option>Man</option><option>Non-binary</option><option>Prefer not to say</option><option>Self-describe</option></select></label><label>Phone <small>(optional)</small><input name="phone" type="tel" autocomplete="tel" placeholder="Phone number"></label></div>
+              <label>Dietary preference<select name="dietaryPreference" required><option value="">Select a preference</option><option>No preference</option><option>Vegetarian</option><option>Vegan</option><option>Pescatarian</option><option>Gluten-free</option><option>Halal</option><option>Kosher</option><option>Other</option></select></label>
+              <label>Allergies<textarea name="allergies" rows="3" placeholder="List allergies, or write None"></textarea></label>
+              <button class="button primary full" type="submit">Create Account</button><p class="privacy-note">Stored only in this browser using localStorage.</p><p class="form-message" id="registerMessage" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+        <div id="accountProfile" class="profile-panel hidden" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="rules.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
